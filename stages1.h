@@ -1,7 +1,6 @@
 #ifndef STAGE1_H
 #define STAGE1_H
 
-/* --- Includes --- */
 #include "graphics.h"
 #include "defs.h"
 #include "Player.h"
@@ -15,23 +14,18 @@
 
 using namespace std;
 
-/* StageOutcome, StageState lấy từ defs.h */
-
-/* --- Hằng số --- */
-// ... (MAP_STAGE1_FILE, SCALE_FACTOR, RENDER_WIDTH/HEIGHT, platforms, obstacles, GOAL_RECT, START_X/Y) ...
 const char* MAP_STAGE1_FILE = "stages\\stage1.png";
 const float STAGE1_PLAYER_SCALE = 0.4f;
 const int STAGE1_RENDER_WIDTH = static_cast<int>(BOBOIBOY_FRAME_WIDTH * STAGE1_PLAYER_SCALE);
 const int STAGE1_RENDER_HEIGHT = static_cast<int>(BOBOIBOY_FRAME_HEIGHT * STAGE1_PLAYER_SCALE);
-const vector<SDL_Rect> stage1_platforms = { { 0, 540, 800, 60 }, { 0, 122, 703, 60 }, { 158, 290, 643, 60 } };
+const vector<SDL_Rect> stage1_platforms = { { 0, 540, 800, 10 }, { 0, 122, 703, 10 }, { 158, 290, 643, 10 } };
 const vector<SDL_Rect> stage1_obstacles = { { 214, 86, 103, 66 }, { 400, 252, 68, 88 }, { 333, 481, 82, 58 } };
 const SDL_Rect STAGE1_GOAL_RECT = { 698, 455, 66, 84 };
 const int PLAYER_START_X_S1 = stage1_platforms[1].x + 20;
 const int PLAYER_START_Y_S1 = stage1_platforms[1].y - STAGE1_RENDER_HEIGHT;
 
 
-/* --- Hàm thực thi Stage 1 --- */
-/* <<< THÊM Mix_Music* bgm làm tham số >>> */
+
 inline StageOutcome stage1(Graphics& graphics, bool& soundEnabled, int playerLives, SDL_Texture* texHeart, Mix_Chunk* clickSfx, Mix_Chunk* notiSfx, Mix_Music* bgm) {
     SDL_SetRenderDrawBlendMode(graphics.renderer, SDL_BLENDMODE_BLEND);
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "0");
@@ -156,8 +150,24 @@ inline StageOutcome stage1(Graphics& graphics, bool& soundEnabled, int playerLiv
         /* ... Vẽ Debug ... */
         boboiboy.render(graphics);
         if (settingButtonTexture) SDL_RenderCopy(graphics.renderer, settingButtonTexture, NULL, &SETTING_BUTTON_RECT);
-        /* Vẽ HUD Trái Tim */
-        if (texHeart) { /* ... code vẽ trái tim ... */ }
+        if (texHeart != nullptr) { // Luôn kiểm tra con trỏ trước khi sử dụng
+            int currentHeartX = 10; // Tọa độ X của trái tim đầu tiên (cách mép trái 10px)
+            const int heartY = 10;  // Tọa độ Y của các trái tim (cách mép trên 10px)
+            const int heartSpacing = 5; // Khoảng cách giữa các trái tim
+
+            /* Lặp đúng số lần bằng số mạng còn lại */
+            for (int i = 0; i < playerLives; ++i) {
+                /* Tạo hình chữ nhật đích cho trái tim hiện tại */
+                SDL_Rect heartDestRect = { currentHeartX, heartY, HEART_ICON_WIDTH, HEART_ICON_HEIGHT };
+
+                /* Vẽ texture trái tim vào vị trí đích */
+                /* Tham số thứ 3 là NULL vì ta vẽ toàn bộ texture trái tim */
+                SDL_RenderCopy(graphics.renderer, texHeart, NULL, &heartDestRect);
+
+                /* Tăng tọa độ X để chuẩn bị vẽ trái tim tiếp theo */
+                currentHeartX += HEART_ICON_WIDTH + heartSpacing;
+            }
+        }
         /* Vẽ Setting Overlay nếu Pause */
         if (currentStageState == StageState::PAUSED_SETTINGS) {
             SDL_Texture* settingTexture = soundEnabled ? setting1Texture : setting2Texture; // Chọn ảnh đúng
