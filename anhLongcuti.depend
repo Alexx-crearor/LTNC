@@ -1,0 +1,130 @@
+# depslib dependency file v1.0
+1746457340 source:e:\code\sdl2\anhlongcuti\main.cpp
+	<SDL.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<iostream>
+	<vector>
+	<string>
+	<sstream>
+	<iomanip>
+	"defs.h"
+	"graphics.h"
+	"Player.h"
+	"Player2.h"
+	"menu.h"
+	"stages1.h"
+	"stages2.h"
+	"stages3.h"
+
+1746448167 e:\code\sdl2\anhlongcuti\defs.h
+	<SDL_rect.h>
+
+1746447477 e:\code\sdl2\anhlongcuti\graphics.h
+	<vector>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	"defs.h"
+
+1744516278 e:\code\sdl2\anhlongcuti\cacham.h
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+	"graphics.h"
+
+1744975720 e:\code\sdl2\anhlongcuti\effects.h
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+	"graphics.h"
+
+1744977032 e:\code\sdl2\anhlongcuti\mouse.h
+
+1745643627 e:\code\sdl2\anhlongcuti\game.h
+
+1746457505 e:\code\sdl2\anhlongcuti\menu.h
+	"graphics.h"
+	"defs.h"
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<iostream>
+	<vector>
+	<cmath>
+	<sstream>
+	<iomanip>
+
+1746457294 e:\code\sdl2\anhlongcuti\stages1.h
+	"graphics.h"
+	"defs.h"
+	"Player.h"
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<iostream>
+	<vector>
+	<cmath>
+	<SDL_mixer.h>
+
+1746453836 e:\code\sdl2\anhlongcuti\player.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_render.h>
+	<vector>
+	<cmath>
+	<iostream>
+	"graphics.h"
+	"defs.h"
+
+1746210570 source:e:\code\sdl2\anhlongcuti\player.cpp
+	"Player.h"
+	"defs.h"
+	"graphics.h"
+	<SDL.h>
+	<iostream>
+	<vector>
+	<cmath>
+
+1746450328 e:\code\sdl2\anhlongcuti\stages2.h
+	"graphics.h"
+	"defs.h"
+	"Player2.h"
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<iostream>
+	<vector>
+	<cmath>
+	<cstdlib>
+	<ctime>
+	<SDL_mixer.h>
+
+1746444471 e:\code\sdl2\anhlongcuti\player2.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_render.h>
+	<vector>
+	<cmath>
+	<iostream>
+	"graphics.h"
+	"defs.h"
+
+1746450289 e:\code\sdl2\anhlongcuti\stages3.h
+	"graphics.h"
+	"defs.h"
+	"Player.h"
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<iostream>
+	<vector>
+	<string>
+	<sstream>
+	<iomanip>
+	<cstdlib>
+	<ctime>
+
