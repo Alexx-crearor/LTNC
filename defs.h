@@ -101,7 +101,10 @@ enum class AppState {
     QUITTING
 };
 
-enum class MenuResult { START_GAME, QUIT_APPLICATION };
+enum class MenuResult {
+    START_GAME,
+    QUIT_APPLICATION
+};
 
 #endif
 

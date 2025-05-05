@@ -1,320 +1,66 @@
-#include <iostream>
+#ifndef EFFECTS_H
+#define EFFECTS_H
+
+#include <vector>
+#include <string>
+#include <sstream>
 #include <SDL.h>
-#include <SDL_image.h>
-#include "defs.h"
+#include <SDL_mixer.h>
 #include "graphics.h"
+#include "defs.h"
+
+using namespace std;
 
 
-#ifndef _EFFECTS__H
-#define _EFFECTS__H
+inline vector<SDL_Texture*> loadTransitionFrames(Graphics& graphics, const string& prefixPath, int frameCount) {
+    vector<SDL_Texture*> frames;
+    frames.reserve(frameCount);
 
-void changeScene(Graphics &graphics){
-    //Mix_Chunk *cS = graphics.loadSound("Sound\\sfx\\gamein.wav");
-    //cS = graphics.loadSound("Sound\\sfx\\ChangeScene.wav");
-    //graphics.play(cS);
-
-    SDL_Texture *changeScene = graphics.loadTexture("img\\effects\\1.png");
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(20);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\2.png");
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(20);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\3.png");
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(20);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\4.png");
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(20);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\5.png");
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(20);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\6.png");
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(20);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\7.png");
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(20);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\8.png");
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(20);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\9.png");
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(20);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\10.png");
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(20);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\11.png");
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(20);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\12.png");
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(20);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\13.png");
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(20);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\14.png");
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(20);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\15.png");
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(20);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\16.png");
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(20);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\17.png");
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(20);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("Image\\ChangeScene\\18.png");
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(20);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\19.png");
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(20);
-
-    SDL_DestroyTexture( changeScene );
-    SDL_RenderClear(graphics.renderer);
-    graphics.presentScene();
-
-    SDL_Delay(1000);
+    for (int i = 1; i <= frameCount; ++i) {
+        stringstream ss;
+        ss << prefixPath << i << ".png";
+        SDL_Texture* frame = graphics.loadTexture(ss.str().c_str());
+        frames.push_back(frame);
+    }
+    return frames;
 }
 
-void dechangeScene(Graphics &graphics, SDL_Texture *mn){
-    SDL_RenderClear(graphics.renderer);
-
-    //Mix_Chunk *cS;
-    //cS = graphics.loadSound("Sound\\sfx\\reChangeScene.wav");
-    //graphics.play(cS);
-
-    SDL_Texture *changeScene = graphics.loadTexture("img\\effects\\19.png");
-    graphics.prepareImg(mn);
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(30);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\18.png");
-    graphics.prepareImg(mn);
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(30);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\17.png");
-    graphics.prepareImg(mn);
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(30);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\16.png");
-    graphics.prepareImg(mn);
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(30);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\15.png");
-    graphics.prepareImg(mn);
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(30);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\14.png");
-    graphics.prepareImg(mn);
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(30);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\13.png");
-    graphics.prepareImg(mn);
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(30);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\12.png");
-    graphics.prepareImg(mn);
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(30);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\11.png");
-    graphics.prepareImg(mn);
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(30);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\10.png");
-    graphics.prepareImg(mn);
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(30);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\9.png");
-    graphics.prepareImg(mn);
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(30);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\8.png");
-    graphics.prepareImg(mn);
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(30);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\7.png");
-    graphics.prepareImg(mn);
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(30);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\6.png");
-    graphics.prepareImg(mn);
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(30);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\5.png");
-    graphics.prepareImg(mn);
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(30);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("img\\effects\\4.png");
-    graphics.prepareImg(mn);
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(30);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("Image\\ChangeScene\\3.png");
-    graphics.prepareImg(mn);
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(30);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("Image\\ChangeScene\\2.png");
-    graphics.prepareImg(mn);
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    SDL_Delay(30);
-
-    SDL_DestroyTexture( changeScene );
-    changeScene = graphics.loadTexture("Image\\ChangeScene\\1.png");
-    graphics.prepareImg(mn);
-    graphics.prepareImg(changeScene);
-    graphics.presentScene();
-
-    graphics.prepareImg(mn);
-    graphics.presentScene();
-
-    SDL_DestroyTexture( changeScene );
-    SDL_DestroyTexture( mn );
-
-    SDL_Delay(500);
+inline void changeScene(Graphics& graphics, const vector<SDL_Texture*>& frames, Mix_Chunk* effectSound, bool soundEnabled) {
+    int frameDelay = 50;
+    if (soundEnabled) { graphics.play(effectSound); }
+    for (SDL_Texture* frameTex : frames) {
+        if (frameTex == nullptr) continue;
+        graphics.prepareScene();
+        SDL_RenderCopy(graphics.renderer, frameTex, NULL, NULL);
+        graphics.presentScene();
+        cout<<"hi"<<" ";
+        SDL_Delay(frameDelay);
+    }
 }
 
-#endif
+inline void dechangeScene(Graphics& graphics,const vector<SDL_Texture*>& frames, Mix_Chunk* effectSound, bool soundEnabled) {
+    int frameDelay = 50;
+    if (soundEnabled) { graphics.play(effectSound); }
+
+    for (auto it = frames.rbegin(); it != frames.rend(); ++it) {
+        SDL_Texture* frameTex = *it;
+        if (frameTex == nullptr) continue;
+        graphics.prepareScene();
+        SDL_RenderCopy(graphics.renderer, frameTex, NULL, NULL);
+        graphics.presentScene();
+        SDL_Delay(frameDelay);
+    }
+     graphics.prepareScene();
+     graphics.presentScene();
+     SDL_Delay(100);
+}
+
+
+inline void cleanupTransitionFrames(vector<SDL_Texture*>& frames) {
+    for(SDL_Texture* tex : frames) {
+        SDL_DestroyTexture(tex);
+    }
+    frames.clear();
+}
+
+#endif // EFFECTS_H
